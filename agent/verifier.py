@@ -1,8 +1,11 @@
-import json, os, sys
+import json
+import os
+import sys
+
 from container import run
 
 # host path -> container path
-HOST_ROOT = 'forge-example'
+HOST_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONT_ROOT = '/work'
 
 

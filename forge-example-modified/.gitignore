@@ -1,0 +1,9 @@
+# This file is part of HarnessForge:
+# https://gitlab.com/sosy-lab/software/harnessforge
+#
+# SPDX-FileCopyrightText: 2025 Dirk Beyer <https://www.sosy-lab.org>
+#
+# SPDX-License-Identifier: Apache-2.0
+
+*.o
+counter

@@ -47,7 +47,12 @@ def emit_harness(spec):
     for target, var in names:
         havoc.append(f'    {target} = {var};')
 
-    call = f'    {spec["target"]}();'
+    args = []
+    for p in spec.get('target_params', []):
+        var = f'__cex_arg_{p["name"]}'
+        havoc.append(f'    {p["type"]} {var} = __VERIFIER_nondet_{p["type"]}();')
+        args.append(var)
+    call = f'    {spec["target"]}({", ".join(args)});'
     parts.append(MAIN.format(havoc='\n'.join(havoc), call=call))
     return ''.join(parts)
 

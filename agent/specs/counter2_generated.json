@@ -1,0 +1,34 @@
+{
+  "target": "add",
+  "target_ret_type": "counter_status_t",
+  "target_params": [
+    {
+      "name": "some_value",
+      "type": "short"
+    }
+  ],
+  "guard_value": "COUNTER_OVERFLOW",
+  "mocks": [
+    {
+      "name": "valueToBeAdded",
+      "ret_type": "short",
+      "params": "short value",
+      "post": null
+    }
+  ],
+  "havoc": [
+    {
+      "name": "global_counter.noi",
+      "type": "short"
+    },
+    {
+      "name": "global_counter.cv",
+      "type": "short"
+    }
+  ],
+  "target_src": "../../src/counter.c",
+  "out": "forge-example-modified/verification/counter/harness.c",
+  "build_flags": "-I forge-example-modified/includes -I forge-example-modified/src/common -DRANGE=10 -DVAL_POS=1",
+  "test_header": "counter.h",
+  "test_sources": "forge-example-modified/src/counter.c forge-example-modified/src/random/rng.c"
+}

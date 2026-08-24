@@ -29,12 +29,18 @@ def emit_test(spec, cex, reps=1000):
         if var in cex['inputs']:
             assigns.append(f'        {g["name"]} = {cex["inputs"][var]};')
 
+    args = []
+    for p in spec.get('target_params', []):
+        var = '__cex_arg_' + p['name']
+        args.append(cex['inputs'].get(var, '0'))
+    arglist = ', '.join(args)
+
     ret = spec.get('target_ret_type', 'void')
     if ret == 'void':
-        call = f'        {spec["target"]}();'
+        call = f'        {spec["target"]}({arglist});'
     else:
         guard = spec.get('guard_value')
-        call = f'        {ret} s = {spec["target"]}();\n'
+        call = f'        {ret} s = {spec["target"]}({arglist});\n'
         if guard:
             call += f'        if (s == {guard}) guarded++;\n'
         call += '        (void)s;'

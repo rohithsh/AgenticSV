@@ -6,10 +6,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 STATIC = {
     'target_src': '../../src/counter.c',
-    'out': 'forge-example/verification/counter/harness.c',
-    'build_flags': '-I includes -I src/common -DRANGE=10',
+    'out': 'forge-example-modified/verification/counter/harness.c',
+    'build_flags': '-I forge-example-modified/includes -I forge-example-modified/src/common -DRANGE=10 -DVAL_POS=1',
     'test_header': 'counter.h',
-    'test_sources': 'src/counter.c src/random/rng.c',
+    'test_sources': 'forge-example-modified/src/counter.c forge-example-modified/src/random/rng.c',
 }
 
 SYSTEM = """You analyse C code to plan a verification harness for one function.
@@ -23,6 +23,7 @@ Schema:
 {
   "target": "<function name>",
   "target_ret_type": "<return type, or void>",
+  "target_params": [{"name": "<param name>", "type": "<C type>"}],
   "guard_value": "<constant the function returns on an early-exit guard, or null>",
   "mocks": [{"name": "<callee>", "ret_type": "<type>", "params": "<C params or void>", "post": null}],
   "havoc": [{"name": "<global variable or field>", "type": "<C scalar type>"}]
@@ -36,6 +37,10 @@ Rules:
 - "post" is always null at this stage.
 - "guard_value" is the constant returned by an early guard that skips the
   function's main body, if one exists.
+- "params" in a mock must be a full C parameter list with names, e.g.
+  "short value", not just "short". Use "void" if there are none.
+- "target_params" lists the target function's own parameters; the harness will
+  set each to an unconstrained value before the call.
 """
 
 USER = """Target function: {target}
@@ -70,16 +75,17 @@ def generate(target, target_file, other_files):
 
 
 if __name__ == '__main__':
-    TARGET = 'addRandom'
-    TARGET_FILE = 'forge-example/src/counter.c'
+    TARGET = 'add'
+    TARGET_FILE = 'forge-example-modified/src/counter.c'
     OTHER_FILES = [
-        'forge-example/src/random/rng.c',
-        'forge-example/includes/counter.h',
-        'forge-example/includes/rng.h',
+        'forge-example-modified/src/random/rng.c',
+        'forge-example-modified/includes/counter.h',
+        'forge-example-modified/includes/rng.h',
+        'forge-example-modified/src/common/types.h',
     ]
 
     spec = generate(TARGET, TARGET_FILE, OTHER_FILES)
     spec.update(STATIC)
-    out_path = os.path.join(ROOT, 'agent/specs/counter_generated.json')
+    out_path = os.path.join(ROOT, 'agent/specs/counter2_generated.json')
     open(out_path, 'w').write(json.dumps(spec, indent=2))
     print(json.dumps(spec, indent=2))
