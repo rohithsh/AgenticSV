@@ -1,0 +1,17 @@
+{
+  "target": "addRandom",
+  "target_src": "../../src/counter.c",
+  "out": "forge-example/verification/counter/harness.c",
+  "mocks": [
+    {"name": "randomShort", "ret_type": "short", "params": "void", "post": null}
+  ],
+  "havoc": [
+    {"name": "global_counter.numberOfIncreases", "type": "short"},
+    {"name": "global_counter.currentValue", "type": "short"}
+  ],
+  "build_flags": "-I includes -I src/common -DRANGE=10",
+  "test_header": "counter.h",
+  "test_sources": "src/counter.c src/random/rng.c",
+  "target_ret_type": "counter_status_t",
+  "guard_value": "COUNTER_OVERFLOW"
+}

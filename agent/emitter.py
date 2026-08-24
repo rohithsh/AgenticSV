@@ -1,0 +1,61 @@
+import json, os
+
+HEADER = '''/* generated harness */
+#include "{target_src}"
+
+short __VERIFIER_nondet_short(void);
+void __CPROVER_assume(_Bool);
+'''
+
+MOCK = '''
+{ret_type} {name}({params}) {{
+    {ret_type} r = __VERIFIER_nondet_{ret_type}();
+{assume}    return r;
+}}
+'''
+
+MAIN = '''
+int main(void) {{
+{havoc}
+{call}
+    return 0;
+}}
+'''
+
+
+def emit_mock(m):
+    assume = ''
+    if m.get('post'):
+        assume = f'    __CPROVER_assume({m["post"]});\n'
+    return MOCK.format(ret_type=m['ret_type'],
+                       name=m['name'],
+                       params=m.get('params', 'void'),
+                       assume=assume)
+
+
+def emit_harness(spec):
+    parts = [HEADER.format(target_src=spec['target_src'])]
+
+    for m in spec['mocks']:
+        parts.append(emit_mock(m))
+
+    havoc, names = [], []
+    for g in spec['havoc']:
+        var = f'__cex_{g["name"].replace(".", "_")}'
+        havoc.append(f'    {g["type"]} {var} = __VERIFIER_nondet_{g["type"]}();')
+        names.append((g['name'], var))
+    for target, var in names:
+        havoc.append(f'    {target} = {var};')
+
+    call = f'    {spec["target"]}();'
+    parts.append(MAIN.format(havoc='\n'.join(havoc), call=call))
+    return ''.join(parts)
+
+
+if __name__ == '__main__':
+    import sys
+    spec = json.load(open(sys.argv[1]))
+    out = emit_harness(spec)
+    os.makedirs(os.path.dirname(spec['out']), exist_ok=True)
+    open(spec['out'], 'w').write(out)
+    print(out)
