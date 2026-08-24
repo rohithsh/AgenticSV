@@ -25,7 +25,8 @@ OPENAI_API_KEY=<api-key>
 ```bash
 git clone https://gitlab.com/cedricrupb/forge-example.git
 docker build -t hagent .
-docker run -d --name hagent-box -v "$PWD/forge-example:/work" hagent sleep infinity
-python3 agent/runner.py agent/specs/counter.json
+docker run -d --name hagent-box -v "$PWD:/work" hagent sleep infinity
+python agent/spec_gen.py
+python agent/runner.py agent/specs/counter2_generated.json
 ```
 
