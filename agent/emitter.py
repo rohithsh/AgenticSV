@@ -9,7 +9,7 @@ void __CPROVER_assume(_Bool);
 
 MOCK = '''
 {ret_type} {name}({params}) {{
-    {ret_type} r = __VERIFIER_nondet_{ret_type}();
+{record}    {ret_type} r = __VERIFIER_nondet_{ret_type}();
 {assume}    return r;
 }}
 '''
@@ -18,19 +18,22 @@ MAIN = '''
 int main(void) {{
 {havoc}
 {call}
+#ifdef HV_REACH
+    __CPROVER_assert(0, "hv_reach");
+#endif
     return 0;
 }}
 '''
 
 
 def emit_mock(m):
-    assume = ''
-    if m.get('post'):
-        assume = f'    __CPROVER_assume({m["post"]});\n'
-    return MOCK.format(ret_type=m['ret_type'],
-                       name=m['name'],
+    from contract_check import parse_params
+    record = ''.join(f'    {t} __cex_mockin_{m["name"]}_{n} = {n};\n'
+                     for t, n in parse_params(m.get('params', 'void')))
+    assume = f'    __CPROVER_assume({m["post"]});\n' if m.get('post') else ''
+    return MOCK.format(ret_type=m['ret_type'], name=m['name'],
                        params=m.get('params', 'void'),
-                       assume=assume)
+                       record=record, assume=assume)
 
 
 def emit_harness(spec):
