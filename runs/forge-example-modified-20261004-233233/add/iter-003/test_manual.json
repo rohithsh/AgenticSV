@@ -1,0 +1,10 @@
+{
+  "inputs": [
+    "global_counter.noi=16384",
+    "global_counter.cv=-11215",
+    "some_value=-32768"
+  ],
+  "outcome": "REPRODUCED",
+  "stdout": "",
+  "stderr": "cex_test: forge-example-modified/src/counter.c:30: counter_status_t add(short): Assertion `0 <= diff && diff <= RANGE' failed.\n"
+}

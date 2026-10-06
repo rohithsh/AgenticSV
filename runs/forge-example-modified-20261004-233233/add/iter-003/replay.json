@@ -1,0 +1,5 @@
+{
+  "outcome": "REPRODUCED",
+  "stdout": "",
+  "stderr": "cex_test: forge-example-modified/src/counter.c:30: counter_status_t add(short): Assertion `0 <= diff && diff <= RANGE' failed.\n"
+}

@@ -1,0 +1,23 @@
+{
+  "target": "add",
+  "target_file": "src/counter.c",
+  "target_ret_type": "counter_status_t",
+  "target_params": [{"name": "some_value", "type": "short"}],
+  "guard_value": "COUNTER_OVERFLOW",
+  "build_flags": "-I includes/ -I src/common/ -DRANGE=10 -DVAL_POS=1",
+  "test_header": "includes/counter.h",
+  "test_sources": "src/counter.c src/random/rng.c",
+  "mocks": [
+    {
+      "name": "valueToBeAdded",
+      "ret_type": "short",
+      "params": "short value",
+      "src": "src/random/rng.c",
+      "post": "r >= 0 && r <= RANGE || (value == SHRT_MIN && r == -RANGE)"
+    }
+  ],
+  "havoc": [
+    {"name": "global_counter.noi", "type": "short"},
+    {"name": "global_counter.cv", "type": "short"}
+  ]
+}

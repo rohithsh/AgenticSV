@@ -1,0 +1,37 @@
+{
+  "_tried": [
+    {
+      "dir": "forge-example-modified/verification/add/iter-000",
+      "rules": {
+        "valueToBeAdded": null
+      },
+      "outcome": "NOT_REPRODUCED"
+    },
+    {
+      "dir": "forge-example-modified/verification/add/iter-001",
+      "rules": {
+        "valueToBeAdded": "-RANGE <= r && r <= RANGE"
+      },
+      "outcome": "NOT_REPRODUCED"
+    },
+    {
+      "dir": "forge-example-modified/verification/add/iter-002",
+      "rules": {
+        "valueToBeAdded": "r >= -RANGE && r <= RANGE && (r >= 0 || r == -RANGE)"
+      },
+      "outcome": "NOT_REPRODUCED"
+    },
+    {
+      "dir": "forge-example-modified/verification/add/iter-003",
+      "rules": {
+        "valueToBeAdded": "r >= 0 && r <= RANGE || (value == SHRT_MIN && r == -RANGE)"
+      },
+      "outcome": "REPRODUCED"
+    }
+  ],
+  "valueToBeAdded": [
+    "-RANGE <= r && r <= RANGE",
+    "r >= -RANGE && r <= RANGE && (r >= 0 || r == -RANGE)",
+    "r >= 0 && r <= RANGE || (value == SHRT_MIN && r == -RANGE)"
+  ]
+}

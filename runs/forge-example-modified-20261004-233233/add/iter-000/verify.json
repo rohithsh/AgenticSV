@@ -1,0 +1,16 @@
+{
+  "outcome": "VIOLATION",
+  "property": "add.assertion.2",
+  "description": "assertion 0 <= diff && diff <= RANGE",
+  "cex": {
+    "inputs": {
+      "__cex_global_counter_noi": "-1",
+      "__cex_global_counter_cv": "-1",
+      "__cex_arg_some_value": "0",
+      "__cex_mockin_valueToBeAdded_value": "0"
+    },
+    "mock_returns": {
+      "return_value_valueToBeAdded": "11"
+    }
+  }
+}
