@@ -41,7 +41,7 @@ NEXT: write the spec, then run: run SPEC <project>/verification/<target>/iter-00
 
 NEXT = {
     'VERIFIER_ERROR': 'NEXT: read the error above, fix the spec, and run again in the same DIR.',
-    'VERIFIED_CLEAN': 'NEXT: finish with: echo TASK_DONE VERIFIED_CLEAN <summary>',
+    'NO_VIOLATION_FOUND': 'NEXT: finish with: echo TASK_DONE NO_VIOLATION_FOUND <summary>',
     'REPRODUCED':     'NEXT: real bug. Finish with: echo TASK_DONE REPRODUCED <summary>',
     'GUARDED':        'NEXT: finish with: echo TASK_DONE GUARDED <summary>',
     'NOT_REPRODUCED': ('NEXT: false alarm. The mock returned a value the real callee never '
@@ -143,6 +143,11 @@ def load(spec_path, iterdir):
     spec = json.load(open(os.path.join(ROOT, spec_path)))
     spec = normalize(spec, project_of(spec_path))
     d = os.path.join(ROOT, iterdir)
+    project = project_of(spec_path)
+    if project and not os.path.realpath(d).startswith(
+            os.path.realpath(os.path.join(ROOT, project, 'verification')) + os.sep):
+        print(f'ERROR: DIR must be inside {project}/verification/, got {iterdir}')
+        sys.exit(1)
     os.makedirs(d, exist_ok=True)
     return spec, d
 
@@ -200,7 +205,7 @@ def cmd_verify(a):
         verify(harness, reach, spec['build_flags'] + ' -DHV_REACH')
         reachable = any(f['description'] == 'hv_reach' for f in parse(reach)['failures'])
         return save(d, 'verify.json',
-                    {'outcome': 'VERIFIED_CLEAN' if reachable else 'VACUOUS'})
+                    {'outcome': 'NO_VIOLATION_FOUND' if reachable else 'VACUOUS'})
     if v['rc'] != 10:
         errors = ''
         try:

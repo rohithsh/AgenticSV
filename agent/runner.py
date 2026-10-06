@@ -36,7 +36,7 @@ def run_iteration(spec, n):
 
     report = parse(os.path.join(ROOT, cex_rel))
     if not report['failures']:
-        return {'iteration': n, 'outcome': 'VERIFIED_CLEAN'}
+        return {'iteration': n, 'outcome': 'NO_VIOLATION_FOUND'}
 
     mocks = [m['name'] for m in spec['mocks']]
     cex = extract_inputs(report['failures'][0], mocks)
@@ -69,7 +69,7 @@ def _loop(spec_path, max_iters=10, max_proposals=5):
         print(f"iter {n}: {v['outcome']}")
         last = v
 
-        if v['outcome'] in ('VERIFIED_CLEAN', 'REPRODUCED'):
+        if v['outcome'] in ('NO_VIOLATION_FOUND', 'REPRODUCED'):
             return v
         if v['outcome'] in ('VERIFIER_ERROR', 'TIMEOUT', 'COMPILE_ERROR'):
             print('  terminal outcome; not repairing')
