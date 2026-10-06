@@ -1,0 +1,30 @@
+{
+  "_tried": [
+    {
+      "dir": "/work/forge-example-modified/verification/add/iter-000",
+      "rules": {
+        "valueToBeAdded": null
+      },
+      "outcome": "NOT_REPRODUCED"
+    },
+    {
+      "dir": "/work/forge-example-modified/verification/add/iter-001",
+      "rules": {
+        "valueToBeAdded": "r >= -RANGE && r <= RANGE"
+      },
+      "outcome": "NOT_REPRODUCED"
+    },
+    {
+      "dir": "/work/forge-example-modified/verification/add/iter-002",
+      "rules": {
+        "valueToBeAdded": "value >= 0 ==> (r >= 0 && r <= RANGE)"
+      },
+      "outcome": "REPRODUCED"
+    }
+  ],
+  "valueToBeAdded": [
+    "r >= -RANGE && r <= RANGE",
+    "r >= -RANGE && r <= RANGE",
+    "value >= 0 ==> (r >= 0 && r <= RANGE)"
+  ]
+}

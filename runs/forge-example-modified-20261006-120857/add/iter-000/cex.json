@@ -1,0 +1,1242 @@
+[
+  {
+    "program": "CBMC 5.95.1 (cbmc-5.95.1)"
+  },
+  {
+    "messageText": "CBMC version 5.95.1 (cbmc-5.95.1) 64-bit x86_64 linux",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Parsing forge-example-modified/verification/add/iter-000/harness.c",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Converting",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Type-checking harness",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Generating GOTO Program",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Adding CPROVER library (x86_64)",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Removal of function pointers and virtual functions",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Generic Property Instrumentation",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Running with 8 object bits, 56 offset bits (default)",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Starting Bounded Model Checking",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Runtime Symex: 0.00375956s",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "size of program expression: 75 steps",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "simple slicing removed 8 assignments",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Generated 2 VCC(s), 2 remaining after simplification",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Runtime Postprocess Equation: 4.1576e-05s",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Passing problem to propositional reduction",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "converting SSA",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Runtime Convert SSA: 0.00193769s",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Running propositional reduction",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Post-processing",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Runtime Post-process: 1.0234e-05s",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Solving with MiniSAT 2.2.1 with simplifier",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "864 variables, 1971 clauses",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "SAT checker: instance is SATISFIABLE",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Runtime Solver: 0.00513578s",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Runtime decision procedure: 0.00719421s",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Building error trace",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Running propositional reduction",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Solving with MiniSAT 2.2.1 with simplifier",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "864 variables, 1248 clauses",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "SAT checker inconsistent: instance is UNSATISFIABLE",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Runtime Solver: 3.3102e-05s",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "messageText": "Runtime decision procedure: 6.8643e-05s",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "result": [
+      {
+        "description": "assertion global_counter.noi >= noi_old",
+        "property": "add.assertion.1",
+        "sourceLocation": {
+          "file": "forge-example-modified/verification/add/iter-000/../../../src/counter.c",
+          "function": "add",
+          "line": "26",
+          "workingDirectory": "/work"
+        },
+        "status": "SUCCESS"
+      },
+      {
+        "description": "assertion 0 <= diff && diff <= RANGE",
+        "property": "add.assertion.2",
+        "sourceLocation": {
+          "file": "forge-example-modified/verification/add/iter-000/../../../src/counter.c",
+          "function": "add",
+          "line": "30",
+          "workingDirectory": "/work"
+        },
+        "status": "FAILURE",
+        "trace": [
+          {
+            "function": {
+              "displayName": "__CPROVER_initialize",
+              "identifier": "__CPROVER_initialize",
+              "sourceLocation": {
+                "file": "<built-in-additions>",
+                "line": "24",
+                "workingDirectory": "/work"
+              }
+            },
+            "hidden": true,
+            "internal": true,
+            "stepType": "function-call",
+            "thread": 0
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": true,
+            "internal": false,
+            "lhs": "__CPROVER_dead_object",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "<built-in-additions>",
+              "line": "8",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "data": "NULL",
+              "name": "pointer",
+              "type": "const void *"
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": true,
+            "internal": false,
+            "lhs": "__CPROVER_deallocated",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "<built-in-additions>",
+              "line": "7",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "data": "NULL",
+              "name": "pointer",
+              "type": "const void *"
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": true,
+            "internal": false,
+            "lhs": "__CPROVER_max_malloc_size",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "<built-in-additions>",
+              "line": "12",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000010000000000000000000000000000000000000000000000000000000",
+              "data": "36028797018963968ul",
+              "name": "integer",
+              "type": "__CPROVER_size_t",
+              "width": 64
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": true,
+            "internal": false,
+            "lhs": "__CPROVER_memory_leak",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "<built-in-additions>",
+              "line": "9",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "data": "NULL",
+              "name": "pointer",
+              "type": "const void *"
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": true,
+            "internal": false,
+            "lhs": "__CPROVER_rounding_mode",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "<built-in-additions>",
+              "line": "16",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "00000000000000000000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed int",
+              "width": 32
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": true,
+            "internal": false,
+            "lhs": "global_counter.noi",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/../../../src/counter.c",
+              "line": "6",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": true,
+            "internal": false,
+            "lhs": "global_counter.cv",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/../../../src/counter.c",
+              "line": "6",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "function": {
+              "displayName": "__CPROVER_initialize",
+              "identifier": "__CPROVER_initialize",
+              "sourceLocation": {
+                "file": "<built-in-additions>",
+                "line": "24",
+                "workingDirectory": "/work"
+              }
+            },
+            "hidden": true,
+            "internal": false,
+            "stepType": "function-return",
+            "thread": 0
+          },
+          {
+            "hidden": false,
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "line": "13",
+              "workingDirectory": "/work"
+            },
+            "stepType": "location-only",
+            "thread": 0
+          },
+          {
+            "function": {
+              "displayName": "main",
+              "identifier": "main",
+              "sourceLocation": {
+                "file": "forge-example-modified/verification/add/iter-000/harness.c",
+                "line": "13",
+                "workingDirectory": "/work"
+              }
+            },
+            "hidden": false,
+            "internal": false,
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "line": "13",
+              "workingDirectory": "/work"
+            },
+            "stepType": "function-call",
+            "thread": 0
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": true,
+            "internal": false,
+            "lhs": "__cex_global_counter_noi",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "main",
+              "line": "14",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": true,
+            "internal": false,
+            "lhs": "return_value___VERIFIER_nondet_short",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "main",
+              "line": "14",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": false,
+            "internal": false,
+            "lhs": "return_value___VERIFIER_nondet_short",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "main",
+              "line": "14",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "1111111111111111",
+              "data": "-1",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": false,
+            "internal": false,
+            "lhs": "__cex_global_counter_noi",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "main",
+              "line": "14",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "1111111111111111",
+              "data": "-1",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": true,
+            "internal": false,
+            "lhs": "__cex_global_counter_cv",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "main",
+              "line": "15",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": true,
+            "internal": false,
+            "lhs": "return_value___VERIFIER_nondet_short$0",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "main",
+              "line": "15",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": false,
+            "internal": false,
+            "lhs": "return_value___VERIFIER_nondet_short$0",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "main",
+              "line": "15",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "1111111111111111",
+              "data": "-1",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": false,
+            "internal": false,
+            "lhs": "__cex_global_counter_cv",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "main",
+              "line": "15",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "1111111111111111",
+              "data": "-1",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": false,
+            "internal": false,
+            "lhs": "global_counter.noi",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "main",
+              "line": "16",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "1111111111111111",
+              "data": "-1",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": false,
+            "internal": false,
+            "lhs": "global_counter.cv",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "main",
+              "line": "17",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "1111111111111111",
+              "data": "-1",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": true,
+            "internal": false,
+            "lhs": "__cex_arg_some_value",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "main",
+              "line": "18",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": true,
+            "internal": false,
+            "lhs": "return_value___VERIFIER_nondet_short$1",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "main",
+              "line": "18",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": false,
+            "internal": false,
+            "lhs": "return_value___VERIFIER_nondet_short$1",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "main",
+              "line": "18",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": false,
+            "internal": false,
+            "lhs": "__cex_arg_some_value",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "main",
+              "line": "18",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "hidden": false,
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "main",
+              "line": "19",
+              "workingDirectory": "/work"
+            },
+            "stepType": "location-only",
+            "thread": 0
+          },
+          {
+            "function": {
+              "displayName": "add",
+              "identifier": "add",
+              "sourceLocation": {
+                "file": "forge-example-modified/verification/add/iter-000/../../../src/counter.c",
+                "line": "11",
+                "workingDirectory": "/work"
+              }
+            },
+            "hidden": false,
+            "internal": false,
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "main",
+              "line": "19",
+              "workingDirectory": "/work"
+            },
+            "stepType": "function-call",
+            "thread": 0
+          },
+          {
+            "assignmentType": "actual-parameter",
+            "hidden": false,
+            "internal": false,
+            "lhs": "some_value",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "main",
+              "line": "19",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": true,
+            "internal": false,
+            "lhs": "value",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/../../../src/counter.c",
+              "function": "add",
+              "line": "12",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": true,
+            "internal": false,
+            "lhs": "return_value_valueToBeAdded",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/../../../src/counter.c",
+              "function": "add",
+              "line": "12",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "function": {
+              "displayName": "valueToBeAdded",
+              "identifier": "valueToBeAdded",
+              "sourceLocation": {
+                "file": "forge-example-modified/verification/add/iter-000/harness.c",
+                "line": "7",
+                "workingDirectory": "/work"
+              }
+            },
+            "hidden": false,
+            "internal": false,
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/../../../src/counter.c",
+              "function": "add",
+              "line": "12",
+              "workingDirectory": "/work"
+            },
+            "stepType": "function-call",
+            "thread": 0
+          },
+          {
+            "assignmentType": "actual-parameter",
+            "hidden": false,
+            "internal": false,
+            "lhs": "value",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/../../../src/counter.c",
+              "function": "add",
+              "line": "12",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": true,
+            "internal": false,
+            "lhs": "__cex_mockin_valueToBeAdded_value",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "valueToBeAdded",
+              "line": "8",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": false,
+            "internal": false,
+            "lhs": "__cex_mockin_valueToBeAdded_value",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "valueToBeAdded",
+              "line": "8",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": true,
+            "internal": false,
+            "lhs": "r",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "valueToBeAdded",
+              "line": "9",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": true,
+            "internal": false,
+            "lhs": "return_value___VERIFIER_nondet_short",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "valueToBeAdded",
+              "line": "9",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": false,
+            "internal": false,
+            "lhs": "return_value___VERIFIER_nondet_short",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "valueToBeAdded",
+              "line": "9",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000001011",
+              "data": "11",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": false,
+            "internal": false,
+            "lhs": "r",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "valueToBeAdded",
+              "line": "9",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000001011",
+              "data": "11",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": false,
+            "internal": false,
+            "lhs": "goto_symex$$return_value$$valueToBeAdded",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "valueToBeAdded",
+              "line": "10",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000001011",
+              "data": "11",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "function": {
+              "displayName": "valueToBeAdded",
+              "identifier": "valueToBeAdded",
+              "sourceLocation": {
+                "file": "forge-example-modified/verification/add/iter-000/harness.c",
+                "line": "7",
+                "workingDirectory": "/work"
+              }
+            },
+            "hidden": false,
+            "internal": false,
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/harness.c",
+              "function": "valueToBeAdded",
+              "line": "11",
+              "workingDirectory": "/work"
+            },
+            "stepType": "function-return",
+            "thread": 0
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": false,
+            "internal": false,
+            "lhs": "return_value_valueToBeAdded",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/../../../src/counter.c",
+              "function": "add",
+              "line": "12",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000001011",
+              "data": "11",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": false,
+            "internal": false,
+            "lhs": "value",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/../../../src/counter.c",
+              "function": "add",
+              "line": "12",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000001011",
+              "data": "11",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "hidden": false,
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/../../../src/counter.c",
+              "function": "add",
+              "line": "14",
+              "workingDirectory": "/work"
+            },
+            "stepType": "location-only",
+            "thread": 0
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": true,
+            "internal": false,
+            "lhs": "noi_old",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/../../../src/counter.c",
+              "function": "add",
+              "line": "20",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": false,
+            "internal": false,
+            "lhs": "noi_old",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/../../../src/counter.c",
+              "function": "add",
+              "line": "20",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "1111111111111111",
+              "data": "-1",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": true,
+            "internal": false,
+            "lhs": "cv_old",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/../../../src/counter.c",
+              "function": "add",
+              "line": "21",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": false,
+            "internal": false,
+            "lhs": "cv_old",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/../../../src/counter.c",
+              "function": "add",
+              "line": "21",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "1111111111111111",
+              "data": "-1",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": false,
+            "internal": false,
+            "lhs": "global_counter.noi",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/../../../src/counter.c",
+              "function": "add",
+              "line": "23",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": false,
+            "internal": false,
+            "lhs": "global_counter.cv",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/../../../src/counter.c",
+              "function": "add",
+              "line": "24",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000001010",
+              "data": "10",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": true,
+            "internal": false,
+            "lhs": "diff",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/../../../src/counter.c",
+              "function": "add",
+              "line": "28",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000000000",
+              "data": "0",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "assignmentType": "variable",
+            "hidden": false,
+            "internal": false,
+            "lhs": "diff",
+            "mode": "C",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/../../../src/counter.c",
+              "function": "add",
+              "line": "28",
+              "workingDirectory": "/work"
+            },
+            "stepType": "assignment",
+            "thread": 0,
+            "value": {
+              "binary": "0000000000001011",
+              "data": "11",
+              "name": "integer",
+              "type": "signed short int",
+              "width": 16
+            }
+          },
+          {
+            "hidden": false,
+            "internal": false,
+            "property": "add.assertion.2",
+            "reason": "assertion 0 <= diff && diff <= RANGE",
+            "sourceLocation": {
+              "file": "forge-example-modified/verification/add/iter-000/../../../src/counter.c",
+              "function": "add",
+              "line": "30",
+              "workingDirectory": "/work"
+            },
+            "stepType": "failure",
+            "thread": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "messageText": "VERIFICATION FAILED",
+    "messageType": "STATUS-MESSAGE"
+  },
+  {
+    "cProverStatus": "failure"
+  }
+]

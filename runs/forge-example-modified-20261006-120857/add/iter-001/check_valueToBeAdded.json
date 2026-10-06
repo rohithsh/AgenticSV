@@ -1,0 +1,5 @@
+{
+  "rule": "value >= 0 ==> (r >= 0 && r <= RANGE)",
+  "outcome": "NOT_REFUTED",
+  "evidence": null
+}
